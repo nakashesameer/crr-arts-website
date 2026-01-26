@@ -2,6 +2,9 @@
  * Art Portfolio - Main JavaScript
  */
 
+// Configuration
+const ITEMS_PER_PAGE = 6; // Number of artworks to show initially and per "Load more" click
+
 document.addEventListener('DOMContentLoaded', () => {
     // Set current year in footer
     const yearElement = document.getElementById('year');
@@ -12,9 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Navigation
     initMobileNav();
 
-    // Lightbox (only on gallery page)
+    // Gallery with progressive loading (only on gallery page)
     if (document.querySelector('.gallery-grid')) {
-        initLightbox();
+        initGallery();
     }
 });
 
@@ -44,9 +47,69 @@ function initMobileNav() {
 }
 
 /**
+ * Gallery with Progressive Loading and Lightbox
+ */
+function initGallery() {
+    const galleryGrid = document.getElementById('gallery-grid');
+    const loadMoreBtn = document.getElementById('load-more-btn');
+    const galleryCount = document.getElementById('gallery-count');
+    const artworkCards = Array.from(galleryGrid.querySelectorAll('.artwork-card'));
+
+    let visibleCount = 0;
+    const totalCount = artworkCards.length;
+
+    // Initially hide all cards
+    artworkCards.forEach(card => {
+        card.classList.add('hidden');
+    });
+
+    // Show initial batch
+    showMoreItems();
+
+    // Load more button click handler
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', showMoreItems);
+    }
+
+    function showMoreItems() {
+        const nextBatch = artworkCards.slice(visibleCount, visibleCount + ITEMS_PER_PAGE);
+
+        nextBatch.forEach((card, index) => {
+            // Stagger the animation
+            setTimeout(() => {
+                card.classList.remove('hidden');
+                card.classList.add('fade-in');
+            }, index * 100);
+        });
+
+        visibleCount += nextBatch.length;
+        updateUI();
+    }
+
+    function updateUI() {
+        // Update count display
+        if (galleryCount) {
+            galleryCount.textContent = `Showing ${visibleCount} of ${totalCount} artworks`;
+        }
+
+        // Hide button if all items are visible
+        if (loadMoreBtn) {
+            if (visibleCount >= totalCount) {
+                loadMoreBtn.style.display = 'none';
+            } else {
+                loadMoreBtn.style.display = 'inline-block';
+            }
+        }
+    }
+
+    // Initialize lightbox
+    initLightbox(artworkCards);
+}
+
+/**
  * Lightbox Gallery
  */
-function initLightbox() {
+function initLightbox(artworkCards) {
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightbox-image');
     const lightboxTitle = document.getElementById('lightbox-title');
@@ -54,21 +117,29 @@ function initLightbox() {
     const closeBtn = document.querySelector('.lightbox-close');
     const prevBtn = document.querySelector('.lightbox-prev');
     const nextBtn = document.querySelector('.lightbox-next');
-    const artworkCards = document.querySelectorAll('.artwork-card');
 
     if (!lightbox || artworkCards.length === 0) return;
 
     let currentIndex = 0;
-    const artworks = Array.from(artworkCards).map(card => ({
-        src: card.querySelector('img').src,
-        title: card.querySelector('h3')?.textContent || '',
-        description: card.querySelector('.artwork-info p')?.textContent || ''
-    }));
 
-    // Open lightbox
-    artworkCards.forEach((card, index) => {
+    // Get artwork data from cards
+    function getArtworks() {
+        return artworkCards
+            .filter(card => !card.classList.contains('hidden'))
+            .map(card => ({
+                src: card.querySelector('img').src,
+                title: card.querySelector('h3')?.textContent || '',
+                description: card.querySelector('.artwork-info p')?.textContent || ''
+            }));
+    }
+
+    // Open lightbox when clicking a visible card
+    artworkCards.forEach(card => {
         card.addEventListener('click', () => {
-            currentIndex = index;
+            if (card.classList.contains('hidden')) return;
+
+            const visibleCards = artworkCards.filter(c => !c.classList.contains('hidden'));
+            currentIndex = visibleCards.indexOf(card);
             showImage(currentIndex);
             openLightbox();
         });
@@ -121,6 +192,9 @@ function initLightbox() {
     }
 
     function showImage(index) {
+        const artworks = getArtworks();
+        if (artworks.length === 0) return;
+
         const artwork = artworks[index];
         lightboxImage.src = artwork.src;
         lightboxImage.alt = artwork.title;
@@ -129,11 +203,13 @@ function initLightbox() {
     }
 
     function showPrev() {
+        const artworks = getArtworks();
         currentIndex = (currentIndex - 1 + artworks.length) % artworks.length;
         showImage(currentIndex);
     }
 
     function showNext() {
+        const artworks = getArtworks();
         currentIndex = (currentIndex + 1) % artworks.length;
         showImage(currentIndex);
     }

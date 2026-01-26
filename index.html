@@ -31,10 +31,9 @@
             <h1 class="page-title">Gallery</h1>
             <p class="page-subtitle">A collection of paintings and drawings</p>
 
-            <div class="gallery-grid">
-			
-				<!-- Artwork 0 -->
-                <article class="artwork-card" data-index="0">
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Artwork 0 -->
+                <article class="artwork-card">
                     <div class="artwork-image">
                         <img src="images/artwork-0.jpg" alt="Shri Siddhivinayak, Mumbai" loading="lazy">
                     </div>
@@ -43,8 +42,9 @@
                         <p>Oil, 2011</p>
                     </div>
                 </article>
+
                 <!-- Artwork 1 -->
-                <article class="artwork-card" data-index="1">
+                <article class="artwork-card">
                     <div class="artwork-image">
                         <img src="images/artwork-1.jpg" alt="Radha Krishna" loading="lazy">
                     </div>
@@ -55,9 +55,9 @@
                 </article>
 
                 <!-- Artwork 2 -->
-                <article class="artwork-card" data-index="2">
+                <article class="artwork-card">
                     <div class="artwork-image">
-                        <img src="images/artwork-2.jpg" alt="Artwork Title 2" loading="lazy">
+                        <img src="images/artwork-2.jpg" alt="Krishna" loading="lazy">
                     </div>
                     <div class="artwork-info">
                         <h3>Krishna</h3>
@@ -66,9 +66,9 @@
                 </article>
 
                 <!-- Artwork 3 -->
-                <article class="artwork-card" data-index="3">
+                <article class="artwork-card">
                     <div class="artwork-image">
-                        <img src="images/artwork-3.jpg" alt="Artwork Title 3" loading="lazy">
+                        <img src="images/artwork-3.jpg" alt="Sunrise" loading="lazy">
                     </div>
                     <div class="artwork-info">
                         <h3>Sunrise</h3>
@@ -77,9 +77,9 @@
                 </article>
 
                 <!-- Artwork 4 -->
-                <article class="artwork-card" data-index="4">
+                <article class="artwork-card">
                     <div class="artwork-image">
-                        <img src="images/artwork-4.jpg" alt="Artwork Title 4" loading="lazy">
+                        <img src="images/artwork-4.jpg" alt="Full Moon" loading="lazy">
                     </div>
                     <div class="artwork-info">
                         <h3>Full Moon</h3>
@@ -88,9 +88,9 @@
                 </article>
 
                 <!-- Artwork 5 -->
-                <article class="artwork-card" data-index="5" hidden>
+                <article class="artwork-card">
                     <div class="artwork-image">
-                        <img src="images/artwork-5.jpg" alt="Artwork Title 5" loading="lazy">
+                        <img src="images/artwork-5.jpg" alt="Artwork Title" loading="lazy">
                     </div>
                     <div class="artwork-info">
                         <h3>Artwork Title</h3>
@@ -99,15 +99,22 @@
                 </article>
 
                 <!-- Artwork 6 -->
-                <article class="artwork-card" data-index="6" hidden>
+                <article class="artwork-card">
                     <div class="artwork-image">
-                        <img src="images/artwork-6.jpg" alt="Artwork Title 6" loading="lazy">
+                        <img src="images/artwork-6.jpg" alt="Artwork Title" loading="lazy">
                     </div>
                     <div class="artwork-info">
                         <h3>Artwork Title</h3>
                         <p>Medium, Year</p>
                     </div>
                 </article>
+
+                <!-- Add more artwork cards here as needed -->
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="load-more-btn">Load More</button>
+                <p class="gallery-count" id="gallery-count"></p>
             </div>
         </section>
     </main>
