@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="index.html" class="logo">Chandrakant R Raut</a>
+            <button class="nav-toggle" aria-label="Toggle navigation">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Gallery</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="main">
+        <section class="gallery-section">
+            <h1 class="page-title">Gallery</h1>
+            <p class="page-subtitle">A collection of paintings and drawings</p>
+
+            <div class="gallery-grid">
+			
+				<!-- Artwork 0 -->
+                <article class="artwork-card" data-index="0">
+                    <div class="artwork-image">
+                        <img src="images/artwork-0.jpg" alt="Shri Siddhivinayak, Mumbai" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>Shri Siddhivinayak, Mumbai</h3>
+                        <p>Oil, 2011</p>
+                    </div>
+                </article>
+                <!-- Artwork 1 -->
+                <article class="artwork-card" data-index="1">
+                    <div class="artwork-image">
+                        <img src="images/artwork-1.jpg" alt="Radha Krishna" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>Radha Krishna</h3>
+                        <p>Acrylic, 2011</p>
+                    </div>
+                </article>
+
+                <!-- Artwork 2 -->
+                <article class="artwork-card" data-index="2">
+                    <div class="artwork-image">
+                        <img src="images/artwork-2.jpg" alt="Artwork Title 2" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>Krishna</h3>
+                        <p>Acrylic, 2024</p>
+                    </div>
+                </article>
+
+                <!-- Artwork 3 -->
+                <article class="artwork-card" data-index="3">
+                    <div class="artwork-image">
+                        <img src="images/artwork-3.jpg" alt="Artwork Title 3" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>Sunrise</h3>
+                        <p>Acrylic, Year</p>
+                    </div>
+                </article>
+
+                <!-- Artwork 4 -->
+                <article class="artwork-card" data-index="4">
+                    <div class="artwork-image">
+                        <img src="images/artwork-4.jpg" alt="Artwork Title 4" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>Full Moon</h3>
+                        <p>Acrylic, Year</p>
+                    </div>
+                </article>
+
+                <!-- Artwork 5 -->
+                <article class="artwork-card" data-index="5" hidden>
+                    <div class="artwork-image">
+                        <img src="images/artwork-5.jpg" alt="Artwork Title 5" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>Artwork Title</h3>
+                        <p>Medium, Year</p>
+                    </div>
+                </article>
+
+                <!-- Artwork 6 -->
+                <article class="artwork-card" data-index="6" hidden>
+                    <div class="artwork-image">
+                        <img src="images/artwork-6.jpg" alt="Artwork Title 6" loading="lazy">
+                    </div>
+                    <div class="artwork-info">
+                        <h3>Artwork Title</h3>
+                        <p>Medium, Year</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+        <button class="lightbox-next" aria-label="Next">&rsaquo;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-image">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; <span id="year"></span> Artist Name. All rights reserved.</p>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
