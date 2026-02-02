@@ -213,6 +213,11 @@ h1, h2, h3, h4 {
     margin-bottom: var(--spacing-sm);
 }
 
+/* Landscape orientation - wider aspect ratio */
+.artwork-card.landscape .artwork-image {
+    aspect-ratio: 5/4;
+}
+
 .artwork-image img {
     width: 100%;
     height: 100%;
@@ -372,38 +377,54 @@ h1, h2, h3, h4 {
    About Page
    ========================================================================== */
 .about-section {
-    max-width: 900px;
+    max-width: var(--max-width);
     margin: 0 auto;
+    margin-top: calc(-1 * var(--spacing-lg));
 }
 
 .about-container {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    gap: var(--spacing-2xl);
-    align-items: start;
+    display: block;
+}
+
+.about-container::after {
+    content: '';
+    display: table;
+    clear: both;
 }
 
 .about-image {
-    aspect-ratio: 3/4;
+    float: left;
+    width: 280px;
+    margin-right: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
     overflow: hidden;
     background-color: var(--color-border);
 }
 
 .about-image img {
     width: 100%;
-    height: 100%;
+    height: auto;
     object-fit: cover;
 }
 
+
+.about-content .page-title {
+    margin-bottom: var(--spacing-sm);
+}
+
 .about-content p {
-    margin-bottom: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
     color: var(--color-text-light);
+}
+
+.about-content .lead {
+    margin-bottom: var(--spacing-sm);
 }
 
 .about-content h2 {
     font-size: 1.5rem;
-    margin-top: var(--spacing-xl);
-    margin-bottom: var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
 }
 
 blockquote {
@@ -422,6 +443,95 @@ blockquote cite {
     font-style: normal;
     margin-top: var(--spacing-sm);
     color: var(--color-text-muted);
+}
+
+/* ==========================================================================
+   Accomplishments Page
+   ========================================================================== */
+.accomplishments-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.accomplishments-section .page-title {
+    margin-bottom: var(--spacing-xl);
+}
+
+.accomplishments-group {
+    margin-bottom: var(--spacing-2xl);
+}
+
+.accomplishments-group h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    padding-bottom: var(--spacing-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.accomplishments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.accomplishment-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.accomplishment-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.accomplishment-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.accomplishment-card p {
+    padding: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+/* Videos Grid */
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.video-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+    overflow: hidden;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.video-card p {
+    padding: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-light);
+    text-align: center;
 }
 
 /* ==========================================================================
@@ -621,13 +731,18 @@ blockquote cite {
         gap: var(--spacing-md);
     }
 
-    .about-container {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-lg);
+    .about-image {
+        float: none;
+        width: 200px;
+        margin: 0 auto var(--spacing-md);
     }
 
-    .about-image {
-        max-width: 300px;
+    .about-content {
+        overflow: visible;
+    }
+
+    .videos-grid {
+        grid-template-columns: 1fr;
     }
 
     .contact-container {

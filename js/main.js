@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Gallery with progressive loading (only on gallery page)
     if (document.querySelector('.gallery-grid')) {
-        initGallery();
+        loadGalleryData();
     }
 });
 
@@ -44,6 +44,64 @@ function initMobileNav() {
             document.body.style.overflow = '';
         });
     });
+}
+
+/**
+ * Load gallery data from JSON file
+ */
+async function loadGalleryData() {
+    const galleryGrid = document.getElementById('gallery-grid');
+
+    try {
+        const response = await fetch('data/artworks.json');
+        if (!response.ok) {
+            throw new Error('Failed to load artwork data');
+        }
+        const data = await response.json();
+
+        // Generate artwork cards from JSON data
+        data.artworks.forEach(artwork => {
+            const card = createArtworkCard(artwork);
+            galleryGrid.appendChild(card);
+        });
+
+        // Initialize gallery after cards are created
+        initGallery();
+    } catch (error) {
+        console.error('Error loading gallery:', error);
+        galleryGrid.innerHTML = '<p class="error-message">Failed to load gallery. Please refresh the page.</p>';
+    }
+}
+
+/**
+ * Create an artwork card element
+ */
+function createArtworkCard(artwork) {
+    const article = document.createElement('article');
+    article.className = 'artwork-card';
+
+    // Add orientation class (defaults to portrait if not specified)
+    if (artwork.orientation === 'landscape') {
+        article.classList.add('landscape');
+    }
+
+    // Format the description (medium and year)
+    let description = artwork.medium || '';
+    if (artwork.year) {
+        description += description ? `, ${artwork.year}` : artwork.year;
+    }
+
+    article.innerHTML = `
+        <div class="artwork-image">
+            <img src="images/${artwork.filename}" alt="${artwork.title}" loading="lazy">
+        </div>
+        <div class="artwork-info">
+            <h3>${artwork.title}</h3>
+            <p>${description}</p>
+        </div>
+    `;
+
+    return article;
 }
 
 /**
