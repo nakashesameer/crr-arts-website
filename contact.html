@@ -80,6 +80,29 @@
                 </div>
             </div>
         </section>
+
+        <section class="comments-section" id="comments-section">
+            <h2>Visitor Comments</h2>
+            <p class="comments-intro">Share your thoughts about the artwork or leave a message for the artist.</p>
+
+            <form class="comment-form" id="comment-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="comment-name">Your Name</label>
+                        <input type="text" id="comment-name" name="name" required maxlength="100">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="comment-message">Your Comment</label>
+                    <textarea id="comment-message" name="message" rows="4" required maxlength="1000"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Post Comment</button>
+            </form>
+
+            <div class="comments-list" id="comments-list">
+                <p class="loading-comments">Loading comments...</p>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -87,5 +110,10 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <!-- Comments functionality -->
+    <script src="js/comments.js"></script>
 </body>
 </html>
