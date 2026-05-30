@@ -2,20 +2,111 @@
   "artworks": [
     {
       "filename": "artwork-0.jpg",
-      "title": "",
+      "title": "Lord Ganesha",
       "medium": "",
       "year": "",
       "orientation": "portrait"
     },
     {
       "filename": "artwork-1.jpg",
-      "title": "",
+      "title": "Radha Krishna",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },
+	{
+      "filename": "artwork-15.jpg",
+      "title": "Cairn at Catskills NY",
       "medium": "",
       "year": "",
       "orientation": "portrait"
     },
     {
       "filename": "artwork-22.jpg",
+      "title": "Montana",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },
+	{
+      "filename": "artwork-27.jpg",
+      "title": "Ship",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },
+	{
+      "filename": "artwork-3.jpg",
+      "title": "Krishna",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },
+	{
+      "filename": "artwork-7.jpg",
+      "title": "Sunrise",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },
+    {
+      "filename": "artwork-8.jpg",
+      "title": "Full Moon",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },  
+	{
+      "filename": "artwork-10.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },	
+	{
+      "filename": "artwork-16.jpg",
+      "title": "Sunset",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-17.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-23.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-21.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-11.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+	{
+      "filename": "artwork-2.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-29.jpg",
       "title": "",
       "medium": "",
       "year": "",
@@ -27,27 +118,13 @@
       "medium": "",
       "year": "",
       "orientation": "portrait"
-    },
+    }, 
     {
-      "filename": "artwork-3.jpg",
+      "filename": "artwork-28.jpg",
       "title": "",
       "medium": "",
       "year": "",
       "orientation": "portrait"
-    },
-    {
-      "filename": "artwork-10.jpg",
-      "title": "",
-      "medium": "",
-      "year": "",
-      "orientation": "portrait"
-    },
-    {
-      "filename": "artwork-2.jpg",
-      "title": "",
-      "medium": "",
-      "year": "",
-      "orientation": "landscape"
     },
     {
       "filename": "artwork-5.jpg",
@@ -84,27 +161,6 @@
       "year": "",
       "orientation": "landscape"
     },
-	{
-      "filename": "artwork-7.jpg",
-      "title": "",
-      "medium": "Oil",
-      "year": "",
-      "orientation": "portrait"
-    },
-    {
-      "filename": "artwork-8.jpg",
-      "title": "",
-      "medium": "",
-      "year": "",
-      "orientation": "portrait"
-    },
-    {
-      "filename": "artwork-15.jpg",
-      "title": "",
-      "medium": "",
-      "year": "",
-      "orientation": "portrait"
-    },
     {
       "filename": "artwork-9.jpg",
       "title": "",
@@ -126,40 +182,145 @@
       "year": "",
       "orientation": "landscape"
     },
-	{
-      "filename": "artwork-16.jpg",
+    {
+      "filename": "artwork-30.jpg",
       "title": "",
       "medium": "",
       "year": "",
       "orientation": "landscape"
     },
     {
-      "filename": "artwork-17.jpg",
+      "filename": "artwork-31.jpg",
       "title": "",
       "medium": "",
       "year": "",
       "orientation": "landscape"
     },
     {
-      "filename": "artwork-23.jpg",
+      "filename": "artwork-32.jpg",
       "title": "",
       "medium": "",
       "year": "",
       "orientation": "landscape"
     },
     {
-      "filename": "artwork-21.jpg",
+      "filename": "artwork-33.jpg",
       "title": "",
       "medium": "",
       "year": "",
       "orientation": "landscape"
     },
     {
-      "filename": "artwork-11.jpg",
+      "filename": "artwork-34.jpg",
       "title": "",
       "medium": "",
       "year": "",
       "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-35.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-36.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-37.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-39.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-40.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-41.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-46.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-47.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-42.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-43.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-44.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-45.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-49.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "landscape"
+    },
+    {
+      "filename": "artwork-38.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
+    },
+    {
+      "filename": "artwork-48.jpg",
+      "title": "",
+      "medium": "",
+      "year": "",
+      "orientation": "portrait"
     }
   ]
 }

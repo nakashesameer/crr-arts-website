@@ -3,7 +3,7 @@
  */
 
 // Configuration
-const ITEMS_PER_PAGE = 6; // Number of artworks to show initially and per "Load more" click
+const ITEMS_PER_PAGE = 9; // Number of artworks to show initially and per "Load more" click
 
 document.addEventListener('DOMContentLoaded', () => {
     // Register Service Worker for PWA
@@ -125,8 +125,7 @@ function createArtworkCard(artwork) {
             <img src="images/${artwork.filename}" alt="${artwork.title}" loading="lazy">
         </div>
         <div class="artwork-info">
-            <h3>${artwork.title}</h3>
-            <p>${description}</p>
+            
         </div>
     `;
 
