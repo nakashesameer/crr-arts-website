@@ -3,7 +3,7 @@
  */
 
 // Configuration
-const ITEMS_PER_PAGE = 9; // Number of artworks to show initially and per "Load more" click
+const ITEMS_PER_PAGE = 50; // Number of artworks to show initially and per "Load more" click
 
 document.addEventListener('DOMContentLoaded', () => {
     // Register Service Worker for PWA
