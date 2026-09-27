@@ -1,0 +1,32 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+description: Art portfolio of Chandrakant R Raut featuring paintings and artwork
+---
+        <section class="gallery-section">
+
+            <div class="gallery-grid" id="gallery-grid">
+                {%- for artwork in artworks.artworks %}
+                {% artworkCard artwork %}
+                {%- endfor %}
+            </div>
+
+            <div class="load-more-container">
+                <button class="btn btn-secondary" id="load-more-btn">Load More</button>
+                <p class="gallery-count" id="gallery-count"></p>
+            </div>
+        </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" aria-label="Previous">&lsaquo;</button>
+        <button class="lightbox-next" aria-label="Next">&rsaquo;</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightbox-image">
+            <div class="lightbox-caption">
+                <h3 id="lightbox-title"></h3>
+                <p id="lightbox-description"></p>
+            </div>
+        </div>
+    </div>

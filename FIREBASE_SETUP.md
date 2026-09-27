@@ -37,7 +37,7 @@ Updates, deletes and every other collection are denied.
 
 ## Step 5: Update Your Code
 
-1. Open `js/comments.js`
+1. Open `src/js/comments.js`
 2. Replace the placeholder config with your actual config:
 
 ```javascript
@@ -91,14 +91,14 @@ firebase init
 firebase emulators:start
 ```
 
-2. Update `js/comments.js` to use emulator:
+2. Update `src/js/comments.js` to use emulator:
 ```javascript
 const USE_EMULATOR = true;
 ```
 
 3. Open your site with a local server:
 ```bash
-npx serve .
+npm run dev
 ```
 
 4. View Emulator UI at http://localhost:4000 to see your test data
@@ -120,14 +120,14 @@ const USE_EMULATOR = false;
    domains `crrarts.com`, `www.crrarts.com` (add `localhost` for testing)
 2. Firebase Console → Build → **App Check** → Apps → your web app →
    reCAPTCHA v3 → paste the **secret key** → Save
-3. Put the **site key** in `APP_CHECK_SITE_KEY` in `js/comments.js`, push, and
+3. Put the **site key** in `APP_CHECK_SITE_KEY` in `src/js/comments.js`, push, and
    post a test comment on the live site
 4. In App Check → APIs → Cloud Firestore, watch metrics for a few days. Once
    nearly all requests show as verified, click **Enforce**
 
 ### Restrict the API key
 
-The `apiKey` in `js/comments.js` is public by design; restricting it limits misuse.
+The `apiKey` in `src/js/comments.js` is public by design; restricting it limits misuse.
 
 1. https://console.cloud.google.com/apis/credentials (project `crr-website-comments`)
 2. Open the "Browser key (auto created by Firebase)"

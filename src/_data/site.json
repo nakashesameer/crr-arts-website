@@ -1,0 +1,10 @@
+{
+    "name": "Chandrakant R Raut",
+    "url": "https://www.crrarts.com",
+    "nav": [
+        { "label": "Gallery", "url": "/index.html" },
+        { "label": "About", "url": "/about.html" },
+        { "label": "Accomplishments", "url": "/accomplishments.html" },
+        { "label": "Contact", "url": "/contact.html" }
+    ]
+}

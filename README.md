@@ -1,94 +1,75 @@
-# Art Portfolio Website
+# CRR Arts — www.crrarts.com
 
-A minimal, clean portfolio website for showcasing artwork. Built with pure HTML, CSS, and JavaScript - no frameworks or build tools required.
+Art portfolio of Chandrakant R Raut. A static site built with [Eleventy](https://www.11ty.dev/)
+and deployed to GitHub Pages by GitHub Actions.
 
-## Features
+## Local development
 
-- **Responsive Design** - Works on desktop, tablet, and mobile
-- **Lightbox Gallery** - Click artwork to view larger with keyboard navigation
-- **Clean Typography** - Uses Cormorant Garamond and Inter fonts
-- **Fast Loading** - No dependencies, optimized CSS
-- **GitHub Pages Ready** - Deploy directly to GitHub Pages
+Requires Node.js 22+ (`brew install node`).
 
-## Quick Start
-
-1. Clone this repository
-2. Add your artwork images to the `images/` folder
-3. Update the HTML files with your content
-4. Push to GitHub and enable GitHub Pages
-
-## File Structure
-
-```
-├── index.html          # Gallery page (home)
-├── about.html          # About page
-├── contact.html        # Contact page
-├── css/
-│   └── styles.css      # All styles
-├── js/
-│   └── main.js         # Lightbox & mobile nav
-└── images/             # Your artwork images
+```sh
+npm install      # once
+npm run dev      # preview at http://localhost:8080, reloads on save
+npm run build    # production build into _site/
 ```
 
-## Customization
+## Project layout
 
-### Adding Your Artwork
-
-1. Add images to the `images/` folder (recommended: JPG, optimized for web)
-2. In `index.html`, update each artwork card:
-
-```html
-<article class="artwork-card" data-index="0">
-    <div class="artwork-image">
-        <img src="images/your-artwork.jpg" alt="Artwork Title" loading="lazy">
-    </div>
-    <div class="artwork-info">
-        <h3>Your Artwork Title</h3>
-        <p>Oil on Canvas, 2024</p>
-    </div>
-</article>
+```
+src/
+├── _data/
+│   ├── artworks.json      # the gallery — one entry per painting
+│   └── site.json          # site name, URL, navigation
+├── _includes/layouts/
+│   └── base.njk           # shared <head>, header/nav, footer
+├── index.njk              # Gallery
+├── about.njk              # About
+├── accomplishments.njk    # Accomplishments
+├── contact.njk            # Visitor comments (Firebase)
+├── css/styles.css
+├── js/main.js             # gallery "Load More", lightbox, mobile nav
+├── js/comments.js         # Firestore comments + App Check
+├── sw.njk                 # service worker (cache versioned per build)
+├── images/                # ORIGINAL full-size images (never edit output)
+├── icons/  manifest.json  CNAME
+eleventy.config.js         # build config + image shortcodes
+firestore.rules            # Firestore security rules (source of truth)
+.github/workflows/         # build on PRs, build + deploy on main
 ```
 
-### Updating Your Information
+`_site/` and `node_modules/` are generated — never edit or commit them.
 
-- **Logo/Name**: Change "Artist Name" in the `.logo` link in all HTML files
-- **About Page**: Edit `about.html` with your bio and photo
-- **Contact Info**: Update email and social links in `contact.html`
+## Adding a painting
 
-### Contact Form Setup
+1. Copy the original photo into `src/images/` (e.g. `artwork-50.jpg`). Full size is fine;
+   the build creates optimized WebP/JPEG versions automatically.
+2. Add an entry to `src/_data/artworks.json` in the position it should appear:
+   ```json
+   {
+     "filename": "artwork-50.jpg",
+     "title": "Sunset over Sahyadri",
+     "medium": "Oil on canvas",
+     "year": "2026",
+     "orientation": "landscape"
+   }
+   ```
+   `orientation` is `portrait` (4:5 card) or `landscape` (5:4 card). Title, medium and
+   year are optional; the title is used as the image's alt text. They show as a
+   lightbox caption only if `SHOW_CAPTIONS` is turned on in `eleventy.config.js`.
+3. Preview with `npm run dev`, then open a pull request (below).
 
-The contact form uses [Formspree](https://formspree.io) for processing. To enable:
+To use an image elsewhere on a page: `{% image "file.jpg", "Alt text", "sizes" %}`.
 
-1. Create a free account at formspree.io
-2. Create a new form and get your form ID
-3. Replace `YOUR_FORM_ID` in `contact.html` with your actual ID
+## Making changes
 
-### Custom Domain
+`main` is what's live. Every change goes through a pull request:
 
-To use your own domain with GitHub Pages:
+1. `git checkout -b my-change`
+2. Edit, preview with `npm run dev`
+3. Commit, `git push -u origin my-change`, open a PR on GitHub
+4. The **Build and deploy** check builds the site on the PR
+5. Merge → GitHub Actions builds and deploys to www.crrarts.com in ~2 minutes
 
-1. In your repository settings, go to Pages
-2. Add your custom domain
-3. Create a `CNAME` file in the root with your domain name
+## Comments (Firebase)
 
-## Deploying to GitHub Pages
-
-1. Push your code to GitHub
-2. Go to repository Settings → Pages
-3. Set source to "main" branch, root folder
-4. Your site will be live at `https://username.github.io/repository-name`
-
-## Image Recommendations
-
-- **Format**: JPG for artwork, PNG for logo if needed
-- **Size**: Max 1500-2000px on longest side for gallery images
-- **Optimization**: Use tools like TinyJPG to compress images
-- **Aspect Ratio**: 4:5 works best with the gallery grid
-
-## Browser Support
-
-Works in all modern browsers (Chrome, Firefox, Safari, Edge).
-
-## License
-
-Free to use and modify for personal projects.
+See [FIREBASE_SETUP.md](FIREBASE_SETUP.md) for Firestore rules, App Check and API key setup.
