@@ -1,0 +1,12 @@
+# Normalize line endings: store LF in the repo regardless of editor/OS
+* text=auto eol=lf
+
+# Binary media — never touch
+*.jpg  binary
+*.JPG  binary
+*.jpeg binary
+*.png  binary
+*.webp binary
+*.gif  binary
+*.mp4  binary
+*.MP4  binary
