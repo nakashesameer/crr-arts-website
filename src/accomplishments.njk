@@ -1,0 +1,64 @@
+---
+layout: layouts/base.njk
+permalink: /accomplishments.html
+title: Accomplishments
+description: Accomplishments, awards, and exhibitions of artist Chandrakant R Raut
+---
+        <section class="accomplishments-section">
+            <h1 class="page-title">Artist Accomplishments</h1>
+
+            {#- Education & Degrees — uncomment and add images when ready
+            <div class="accomplishments-group">
+                <h2>Education & Degrees</h2>
+                <div class="accomplishments-grid">
+                    <div class="accomplishment-card">
+                        {% image "degree-1.jpg", "Degree from Sir JJ School of Art", "(max-width: 768px) 100vw, 400px" %}
+                        <p>Degree from Sir JJ School of Art</p>
+                    </div>
+                </div>
+            </div>
+            #}
+
+            <div class="accomplishments-group">
+                <h2>Exhibition 2021</h2>
+                <div class="accomplishments-grid">
+                    <div class="accomplishment-card">
+                        {% image "exhibit-0.jpg", "2021 Exhibition", "(max-width: 768px) 100vw, 400px" %}
+                    </div>
+                    <div class="videos-grid">
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <video src="/images/exhibit-vid-1.MP4" controls preload="metadata" playsinline title="Exhibition Video 1"></video>
+                            </div>
+                            <p>2021 Exhibition - Part 1</p>
+                        </div>
+                        <div class="video-card">
+                            <div class="video-wrapper">
+                                <video src="/images/exhibit-vid-2.MP4" controls preload="metadata" playsinline title="Exhibition Video 2"></video>
+                            </div>
+                            <p>2021 Exhibition - Part 2</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {#- Recognitions & Awards — uncomment and fill in descriptions when ready
+            <div class="accomplishments-group">
+                <h2>Recognitions & Awards</h2>
+                <div class="accomplishments-grid">
+                    <div class="accomplishment-card">
+                        {% image "cert-1.jpg", "Award description", "(max-width: 768px) 100vw, 400px" %}
+                        <p>Award description</p>
+                    </div>
+                    <div class="accomplishment-card">
+                        {% image "cert-2.jpg", "Award description", "(max-width: 768px) 100vw, 400px" %}
+                        <p>Award description</p>
+                    </div>
+                    <div class="accomplishment-card">
+                        {% image "cert-0.jpg", "Award description", "(max-width: 768px) 100vw, 400px" %}
+                        <p>Award description</p>
+                    </div>
+                </div>
+            </div>
+            #}
+        </section>

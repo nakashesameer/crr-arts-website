@@ -1,8 +1,13 @@
+---
+permalink: /sw.js
+eleventyExcludeFromCollections: true
+---
 /**
  * Service Worker for CRR Art Portfolio PWA
  */
 
-const CACHE_NAME = 'crr-art-v1';
+// Versioned per build so each deploy replaces the old cache
+const CACHE_NAME = 'crr-art-{{ buildTime }}';
 
 // Files to cache for offline use
 const STATIC_ASSETS = [
@@ -62,13 +67,12 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        // Clone the response before caching
-        const responseClone = response.clone();
-
-        caches.open(CACHE_NAME)
-          .then((cache) => {
-            cache.put(event.request, responseClone);
-          });
+        // Only cache complete responses (videos return 206 partial content)
+        if (response.status === 200) {
+          const responseClone = response.clone();
+          caches.open(CACHE_NAME)
+            .then((cache) => cache.put(event.request, responseClone));
+        }
 
         return response;
       })

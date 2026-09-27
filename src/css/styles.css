@@ -29,6 +29,11 @@
 }
 
 /* Reset & Base */
+/* Responsive images are wrapped in <picture>; let the <img> size against the parent */
+picture {
+    display: contents;
+}
+
 *,
 *::before,
 *::after {
@@ -519,12 +524,14 @@ blockquote cite {
     overflow: hidden;
 }
 
-.video-wrapper iframe {
+.video-wrapper iframe,
+.video-wrapper video {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background-color: #000;
 }
 
 .video-card p {
