@@ -18,32 +18,15 @@
 
 ## Step 3: Set Up Security Rules
 
+The rules live in [`firestore.rules`](firestore.rules) — that file is the source of truth.
+
 1. In Firestore, go to the "Rules" tab
-2. Replace the rules with:
-
-```
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-    match /comments/{commentId} {
-      // Anyone can read comments
-      allow read: if true;
-
-      // Anyone can create a comment with valid fields
-      allow create: if request.resource.data.keys().hasAll(['name', 'message', 'timestamp'])
-                    && request.resource.data.name is string
-                    && request.resource.data.name.size() <= 100
-                    && request.resource.data.message is string
-                    && request.resource.data.message.size() <= 1000;
-
-      // No one can update or delete (admin can do this in console)
-      allow update, delete: if false;
-    }
-  }
-}
-```
-
+2. Paste the full contents of `firestore.rules`
 3. Click "Publish"
+
+They allow anyone to read comments and to create a comment containing exactly
+`name` (1–100 chars), `message` (1–1000 chars) and a server-set `timestamp`.
+Updates, deletes and every other collection are denied.
 
 ## Step 4: Get Your Firebase Config
 
@@ -126,6 +109,32 @@ When deploying to GitHub Pages, set:
 ```javascript
 const USE_EMULATOR = false;
 ```
+
+---
+
+## Hardening (do once)
+
+### App Check (blocks scripted spam)
+
+1. Register the site at https://www.google.com/recaptcha/admin → reCAPTCHA **v3**,
+   domains `crrarts.com`, `www.crrarts.com` (add `localhost` for testing)
+2. Firebase Console → Build → **App Check** → Apps → your web app →
+   reCAPTCHA v3 → paste the **secret key** → Save
+3. Put the **site key** in `APP_CHECK_SITE_KEY` in `js/comments.js`, push, and
+   post a test comment on the live site
+4. In App Check → APIs → Cloud Firestore, watch metrics for a few days. Once
+   nearly all requests show as verified, click **Enforce**
+
+### Restrict the API key
+
+The `apiKey` in `js/comments.js` is public by design; restricting it limits misuse.
+
+1. https://console.cloud.google.com/apis/credentials (project `crr-website-comments`)
+2. Open the "Browser key (auto created by Firebase)"
+3. Application restrictions → **Websites**, add:
+   `https://crrarts.com/*`, `https://www.crrarts.com/*`, plus your local preview address
+   (e.g. `http://localhost:5500/*` for VS Code Live Server)
+4. Save (takes a few minutes to apply)
 
 ---
 

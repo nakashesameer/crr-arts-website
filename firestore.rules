@@ -1,19 +1,34 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+
+    // A new comment must contain exactly name, message and a server timestamp
+    function isValidComment(data) {
+      return data.keys().hasOnly(['name', 'message', 'timestamp'])
+          && data.keys().hasAll(['name', 'message', 'timestamp'])
+          && data.name is string
+          && data.name.trim().size() > 0
+          && data.name.size() <= 100
+          && data.message is string
+          && data.message.trim().size() > 0
+          && data.message.size() <= 1000
+          && data.timestamp == request.time;
+    }
+
     match /comments/{commentId} {
       // Anyone can read comments
       allow read: if true;
 
-      // Anyone can create a comment with valid fields
-      allow create: if request.resource.data.keys().hasAll(['name', 'message', 'timestamp'])
-                    && request.resource.data.name is string
-                    && request.resource.data.name.size() <= 100
-                    && request.resource.data.message is string
-                    && request.resource.data.message.size() <= 1000;
+      // Anyone can create a well-formed comment
+      allow create: if isValidComment(request.resource.data);
 
       // No one can update or delete (admin can do this in console)
       allow update, delete: if false;
+    }
+
+    // Everything else is closed
+    match /{document=**} {
+      allow read, write: if false;
     }
   }
 }

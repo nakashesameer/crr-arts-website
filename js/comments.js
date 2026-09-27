@@ -12,6 +12,10 @@ const firebaseConfig = {
 	appId: "1:902796568529:web:d39d1ce01dd490296da2f0"
 };
 
+// reCAPTCHA v3 site key for Firebase App Check (blocks scripted spam).
+// Leave empty to disable. See FIREBASE_SETUP.md → "App Check".
+const APP_CHECK_SITE_KEY = '6LfmENItAAAAAPUP3KJNVqzlzeYPzrs1W6qWBfo_';
+
 // Set to true when using Firebase emulator for local testing
 const USE_EMULATOR = false;
 const EMULATOR_HOST = 'localhost';
@@ -27,6 +31,11 @@ function initFirebase() {
         // Initialize Firebase app
         if (!firebase.apps.length) {
             firebase.initializeApp(firebaseConfig);
+        }
+
+        // App Check must be activated before any Firestore call
+        if (APP_CHECK_SITE_KEY && !USE_EMULATOR && typeof firebase.appCheck === 'function') {
+            firebase.appCheck().activate(APP_CHECK_SITE_KEY, true);
         }
 
         // Get Firestore instance
