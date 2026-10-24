@@ -1,0 +1,112 @@
+{
+    "origin": { "city": "Mumbai", "lat": 19.076, "lng": 72.878 },
+    "continents": [
+        {
+            "name": "Asia",
+            "locations": [
+                {
+                    "city": "Mumbai",
+                    "region": "Maharashtra",
+                    "country": "India",
+                    "countryId": "356",
+                    "lat": 19.076,
+                    "lng": 72.878,
+                    "painting": "",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "North America",
+            "locations": [
+                {
+                    "city": "Princeton",
+                    "region": "New Jersey",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 40.357,
+                    "lng": -74.667,
+                    "painting": "",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                },
+                {
+                    "city": "McKinney",
+                    "region": "Texas",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 33.197,
+                    "lng": -96.640,
+                    "painting": "",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                },
+                {
+                    "city": "Morrisville",
+                    "region": "Pennsylvania",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 40.212,
+                    "lng": -74.788,
+                    "painting": "",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "South America",
+            "locations": [
+                {
+                    "city": "Santiago de Surco",
+                    "region": "Lima",
+                    "country": "Peru",
+                    "countryId": "604",
+                    "lat": -12.135,
+                    "lng": -76.997,
+                    "painting": "",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "Australia",
+            "locations": [
+                {
+                    "city": "Melbourne",
+                    "region": "Victoria",
+                    "country": "Australia",
+                    "countryId": "036",
+                    "lat": -37.814,
+                    "lng": 144.963,
+                    "painting": "",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "Europe",
+            "marker": { "lat": 50, "lng": 12 },
+            "locations": []
+        },
+        {
+            "name": "Africa",
+            "marker": { "lat": 3, "lng": 21 },
+            "locations": []
+        },
+        {
+            "name": "Antarctica",
+            "marker": { "lat": -74, "lng": 30 },
+            "locations": []
+        }
+    ]
+}

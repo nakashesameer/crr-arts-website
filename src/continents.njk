@@ -1,0 +1,103 @@
+---
+layout: layouts/base.njk
+permalink: /continents.html
+title: The Continent Project
+description: The Continent Project — a journey to have a painting by Chandrakant R Raut on every continent on earth
+---
+{%- set cp = continentProject %}
+        <section class="continents-section">
+            <header class="continents-intro">
+                <p class="continents-eyebrow">The Continent Project</p>
+                <h1 class="page-title">One painting on every continent</h1>
+                {#- DRAFT intro — replace with the family's own words #}
+                <p class="lead">
+                    From a studio in Mumbai, Mr. Raut's paintings have travelled to homes across the world.
+                    The Continent Project is a family journey to place at least one of his paintings on each of
+                    the seven continents on earth.
+                </p>
+
+                <ol class="continent-progress" aria-label="{{ cp.stats.reached }} of {{ cp.stats.total }} continents reached">
+                    {%- for c in cp.continents %}
+                    <li class="{{ 'is-reached' if c.reached else 'is-pending' }}">
+                        <a href="#{{ c.slug }}">{{ c.name }}</a>
+                    </li>
+                    {%- endfor %}
+                </ol>
+                <p class="continent-progress-count"><strong>{{ cp.stats.reached }}</strong> of {{ cp.stats.total }} continents</p>
+            </header>
+
+            <figure class="world-map">
+                <svg viewBox="0 0 {{ cp.map.width }} {{ cp.map.height }}" role="img"
+                     aria-label="World map showing paintings in {{ cp.stats.homes }} cities across {{ cp.stats.reached }} continents">
+                    <path class="map-sphere" d="{{ cp.map.sphere }}"/>
+                    <path class="map-land" d="{{ cp.map.land }}"/>
+                    <path class="map-highlight" d="{{ cp.map.highlighted }}"/>
+                    {%- for c in cp.continents %}
+                    {%- if c.marker %}
+                    <g class="map-pending" transform="translate({{ c.marker.x }} {{ c.marker.y }})">
+                        <circle r="9"/>
+                        <text y="-16">{{ c.name }}</text>
+                    </g>
+                    {%- endif %}
+                    {%- for loc in c.locations %}
+                    <a href="#{{ c.slug }}" class="map-pin">
+                        <circle cx="{{ loc.x }}" cy="{{ loc.y }}" r="6">
+                            <title>{{ loc.city }}, {{ loc.country }}</title>
+                        </circle>
+                    </a>
+                    {%- endfor %}
+                    {%- endfor %}
+                </svg>
+                <figcaption>
+                    <span class="legend legend-reached">Painting in place</span>
+                    <span class="legend legend-pending">Awaiting a painting</span>
+                </figcaption>
+            </figure>
+
+            <dl class="continent-stats">
+                <div><dt>Continents</dt><dd>{{ cp.stats.reached }} / {{ cp.stats.total }}</dd></div>
+                <div><dt>Cities</dt><dd>{{ cp.stats.homes }}</dd></div>
+                <div><dt>Countries</dt><dd>{{ cp.stats.countries }}</dd></div>
+                <div><dt>Farthest from Mumbai</dt><dd>{{ cp.stats.farthest.km | toLocaleString }} km</dd></div>
+            </dl>
+
+            {%- for c in cp.continents %}
+            <section class="continent-group{{ '' if c.reached else ' is-pending' }}" id="{{ c.slug }}">
+                <h2>{{ c.name }}</h2>
+                {%- if c.reached %}
+                <div class="location-grid">
+                    {%- for loc in c.locations %}
+                    <article class="location-card">
+                        <div class="location-photo">
+                            {%- if loc.photo or loc.painting %}
+                            {%- set photoFile = loc.photo or loc.painting %}
+                            {%- set photoAlt = "Painting by Chandrakant R Raut in " + loc.city %}
+                            {% image photoFile, photoAlt, "(max-width: 768px) 100vw, 360px" %}
+                            {%- else %}
+                            <span class="location-photo-placeholder">Photo coming soon</span>
+                            {%- endif %}
+                        </div>
+                        <div class="location-info">
+                            <h3>{{ loc.city }}</h3>
+                            <p class="location-place">{{ loc.region }}, {{ loc.country }}</p>
+                            <p class="location-coords">{{ loc.coords }}</p>
+                            <p class="location-distance">
+                                {%- if loc.km > 0 %}{{ loc.km | toLocaleString }} km from Mumbai{% else %}Where it all began{% endif %}
+                                {%- if loc.year %} · {{ loc.year }}{% endif %}
+                            </p>
+                            {%- if loc.story %}
+                            <p class="location-story">{{ loc.story }}</p>
+                            {%- endif %}
+                        </div>
+                    </article>
+                    {%- endfor %}
+                </div>
+                {%- else %}
+                <p class="continent-pending-text">
+                    Awaiting its first painting. Do you know a home in {{ c.name }} that would welcome one?
+                    <a href="/contact.html">Leave us a message</a>.
+                </p>
+                {%- endif %}
+            </section>
+            {%- endfor %}
+        </section>
