@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if title %}{{ title }} - {% endif %}{{ site.name }}</title>
     <meta name="description" content="{{ description }}">
+    {%- if noindex %}
+    <meta name="robots" content="noindex">
+    {%- endif %}
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#1a1a1a">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -16,6 +19,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    {%- if pageFonts %}
+    <link href="https://fonts.googleapis.com/css2?{% for f in pageFonts %}family={{ f }}&{% endfor %}display=swap" rel="stylesheet">
+    {%- endif %}
 </head>
 <body>
     <header class="header">
@@ -28,7 +34,9 @@
             </button>
             <ul class="nav-links">
                 {%- for item in site.nav %}
+                {%- if not item.hidden %}
                 <li><a href="{{ item.url }}"{% if item.url == page.url %} class="active"{% endif %}>{{ item.label }}</a></li>
+                {%- endif %}
                 {%- endfor %}
             </ul>
         </nav>

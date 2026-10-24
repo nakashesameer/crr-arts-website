@@ -1,0 +1,132 @@
+---
+layout: layouts/base.njk
+permalink: /continents.html
+title: The Continent Project
+description: The Continent Project — a journey to have a painting by Chandrakant R Raut on every continent on earth
+# Unlisted until Europe and Africa are in place: remove this and the
+# "hidden" flag on Continents in _data/site.json to publish it
+noindex: true
+pageFonts:
+    - Gotu
+    - Cinzel:wght@500
+tagline:
+    mr: जगाच्या कानाकोपऱ्यात
+    en: To every corner of the world
+---
+{%- set cp = continentProject %}
+        <section class="continents-section">
+            <header class="continents-intro">
+                <p class="continents-tagline">
+                    <span class="tagline-mr" lang="mr">{{ tagline.mr }}</span>
+                    <span class="tagline-en">{{ tagline.en }}</span>
+                </p>
+                <h1 class="continents-title">The Continent Project</h1>
+                <p class="continents-subline">One painting on every continent</p>
+                <p class="lead">
+                    For most of his life, Mr. Raut's paintings have lived quietly with his family and close friends.
+                    A few have gone out into the world without his name, to homes we will never find. He has always
+                    painted out of sheer love for the art, never expecting recognition. But we, his family, believe
+                    he deserves it, and so does his work.
+                </p>
+                <p class="lead">
+                    The Continent Project is our way of giving his work that recognition: by letting it travel
+                    farther, to a home on each of the seven continents.
+                </p>
+
+                <ol class="continent-progress" aria-label="{{ cp.stats.reached }} of {{ cp.stats.total }} continents reached">
+                    {%- for c in cp.continents %}
+                    <li class="{{ 'is-reached' if c.reached else 'is-pending' }}">
+                        <a href="#{{ c.slug }}">{{ c.name }}</a>
+                    </li>
+                    {%- endfor %}
+                </ol>
+                <p class="continent-progress-count"><strong>{{ cp.stats.reached }}</strong> of {{ cp.stats.total }} continents</p>
+            </header>
+
+            <figure class="world-map">
+                <svg viewBox="0 0 {{ cp.map.width }} {{ cp.map.height }}" role="img"
+                     aria-label="World map showing paintings in {{ cp.stats.homes }} cities across {{ cp.stats.reached }} continents">
+                    <path class="map-sphere" d="{{ cp.map.sphere }}"/>
+                    <path class="map-land" d="{{ cp.map.land }}"/>
+                    <path class="map-highlight" d="{{ cp.map.highlighted }}"/>
+                    {%- for c in cp.continents %}
+                    {%- if c.marker %}
+                    <g class="map-pending" transform="translate({{ c.marker.x }} {{ c.marker.y }})">
+                        <circle r="9"/>
+                        <text y="-16">{{ c.name }}</text>
+                    </g>
+                    {%- endif %}
+                    {%- for loc in c.locations %}
+                    <a href="#{{ c.slug }}" class="map-pin">
+                        <circle cx="{{ loc.x }}" cy="{{ loc.y }}" r="6">
+                            <title>{{ loc.city }}, {{ loc.country }}</title>
+                        </circle>
+                    </a>
+                    {%- endfor %}
+                    {%- endfor %}
+                </svg>
+                <figcaption>
+                    <span class="legend legend-reached">Painting in place</span>
+                    <span class="legend legend-pending">Awaiting a painting</span>
+                </figcaption>
+            </figure>
+
+            <dl class="continent-stats" aria-describedby="continent-stats-note">
+                <div><dt>Continents</dt><dd>{{ cp.stats.reached }} / {{ cp.stats.total }}</dd></div>
+                <div><dt>Cities</dt><dd>{{ cp.stats.homes }}</dd></div>
+                <div><dt>Countries</dt><dd>{{ cp.stats.countries }}</dd></div>
+                <div><dt>Farthest from home</dt><dd>{{ cp.stats.farthest.km | toLocaleString }} km</dd></div>
+            </dl>
+            <p class="continent-stats-note" id="continent-stats-note">Distances are measured from the artist's home in {{ cp.origin.city }}.</p>
+
+            {%- for c in cp.continents %}
+            <section class="continent-group{{ '' if c.reached else ' is-pending' }}" id="{{ c.slug }}">
+                <h2>{{ c.name }}</h2>
+                {%- if c.reached %}
+                <div class="location-grid">
+                    {%- for loc in c.locations %}
+                    <article class="location-card">
+                        <div class="location-photo{{ ' is-artwork' if loc.painting and not loc.photo }}">
+                            {%- if loc.photo or loc.painting %}
+                            {%- set photoFile = loc.photo or loc.painting %}
+                            {%- set photoAlt = "Painting by Chandrakant R Raut in " + loc.city %}
+                            {%- set photoAttrs = { style: "object-position: " + loc.photoPosition } if loc.photoPosition else {} %}
+                            {% image photoFile, photoAlt, "(max-width: 768px) 100vw, 360px", photoAttrs %}
+                            {%- else %}
+                            <span class="location-photo-placeholder">Photo coming soon</span>
+                            {%- endif %}
+                        </div>
+                        <div class="location-info">
+                            <h3>{{ loc.city }}</h3>
+                            <p class="location-place">{{ loc.region }}, {{ loc.country }}</p>
+                            <p class="location-coords">{{ loc.coords }}</p>
+                            <p class="location-distance">
+                                {{ loc.km | toLocaleString }} km from {{ cp.origin.city }}
+                                {%- if loc.year %} · {{ loc.year }}{% endif %}
+                            </p>
+                            {%- if loc.story %}
+                            <p class="location-story">{{ loc.story }}</p>
+                            {%- endif %}
+                        </div>
+                    </article>
+                    {%- endfor %}
+                </div>
+                {%- else %}
+                <p class="continent-pending-text">
+                    Awaiting its first painting. Do you know a home in {{ c.name }} that would welcome one?
+                    <a href="/contact.html">Leave us a message</a>.
+                </p>
+                {%- endif %}
+            </section>
+            {%- endfor %}
+
+            <aside class="continents-note" aria-labelledby="continents-note-title">
+                <h2 id="continents-note-title">Why this project</h2>
+                <p>
+                    I have watched Daddyji paint with the same joy for years, and it always struck me how few
+                    people outside our family had seen his work. This project is my small tribute to him: a way
+                    for his paintings to travel as far as they deserve, one continent at a time.
+                </p>
+                <p class="continents-note-signature">— Sameer</p>
+            </aside>
+        </section>

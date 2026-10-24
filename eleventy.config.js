@@ -42,6 +42,7 @@ async function artworkCard(artwork) {
 export default function (eleventyConfig) {
     eleventyConfig.addAsyncShortcode("image", image);
     eleventyConfig.addAsyncShortcode("artworkCard", artworkCard);
+    eleventyConfig.addFilter("toLocaleString", (n) => Number(n).toLocaleString("en-US"));
 
     // Build timestamp, used to version the service worker cache
     eleventyConfig.addGlobalData("buildTime", () => Date.now());

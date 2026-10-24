@@ -11,6 +11,7 @@
     --color-text-muted: #999999;
     --color-border: #e5e5e5;
     --color-accent: #2c2c2c;
+    --color-highlight: #a8834a;
 
     --font-serif: 'Cormorant Garamond', Georgia, serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -772,9 +773,369 @@ blockquote cite {
 }
 
 /* ==========================================================================
+   Continent Project
+   ========================================================================== */
+.continents-section {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.continents-intro {
+    max-width: 760px;
+    margin: 0 auto var(--spacing-xl);
+    text-align: center;
+}
+
+/* Marathi tagline — the page's opening line */
+.continents-tagline {
+    margin: var(--spacing-sm) 0 var(--spacing-lg);
+    animation: taglineIn 1.2s ease both;
+}
+
+.tagline-mr {
+    display: block;
+    font-family: 'Gotu', var(--font-serif);
+    font-weight: 700; /* Gotu has one weight; browsers synthesize the bold */
+    font-size: clamp(1.05rem, 2.2vw, 1.375rem); /* same as .tagline-en */
+    line-height: 1.35;
+    padding-top: 0.1em; /* room for the top matras */
+    color: var(--color-highlight);
+    background: linear-gradient(180deg, #c9a265 0%, #a8834a 55%, #7f6034 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.tagline-en {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-xs);
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.05rem, 2.2vw, 1.375rem);
+    color: var(--color-text-light);
+}
+
+.tagline-en::before,
+.tagline-en::after {
+    content: "";
+    width: clamp(2rem, 8vw, 4.5rem);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-highlight));
+}
+
+.tagline-en::after {
+    background: linear-gradient(90deg, var(--color-highlight), transparent);
+}
+
+.continents-title {
+    font-family: 'Cinzel', var(--font-serif);
+    font-weight: 500;
+    color: var(--color-highlight);
+    font-size: clamp(1.05rem, 2.2vw, 1.375rem); /* same as the taglines */
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-xs);
+}
+
+.continents-subline {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
+}
+
+@keyframes taglineIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .continents-tagline {
+        animation: none;
+    }
+}
+
+.continent-progress {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-lg);
+}
+
+.continent-progress a {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border: 1px solid var(--color-border);
+    border-radius: 999px;
+    font-size: 0.8125rem;
+    color: var(--color-text-light);
+    text-decoration: none;
+}
+
+.continent-progress .is-reached a {
+    background-color: var(--color-highlight);
+    border-color: var(--color-highlight);
+    color: var(--color-white);
+}
+
+.continent-progress .is-pending a {
+    border-style: dashed;
+}
+
+.continent-progress-count {
+    margin-top: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+}
+
+.world-map {
+    margin: 0 auto var(--spacing-xl);
+}
+
+.world-map svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.map-sphere {
+    fill: var(--color-white);
+    stroke: var(--color-border);
+}
+
+.map-land {
+    fill: #e4e1dc;
+}
+
+.map-highlight {
+    fill: #dcc8a6;
+}
+
+.map-pin circle {
+    fill: var(--color-highlight);
+    stroke: var(--color-white);
+    stroke-width: 2;
+    transition: r var(--transition);
+}
+
+.map-pin:hover circle,
+.map-pin:focus circle {
+    r: 9;
+}
+
+.map-pending circle {
+    fill: none;
+    stroke: var(--color-text-muted);
+    stroke-width: 1.5;
+    stroke-dasharray: 3 3;
+}
+
+.map-pending text {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    fill: var(--color-text-muted);
+    text-anchor: middle;
+}
+
+.world-map figcaption {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-sm);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+}
+
+.legend::before {
+    content: "";
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin-right: 0.4rem;
+    border-radius: 50%;
+    vertical-align: -1px;
+}
+
+.legend-reached::before {
+    background-color: var(--color-highlight);
+}
+
+.legend-pending::before {
+    border: 1.5px dashed var(--color-text-muted);
+}
+
+.continent-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-2xl);
+    padding: var(--spacing-lg) 0;
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.continent-stats dt {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+}
+
+.continent-stats dd {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    margin-top: 0.25rem;
+}
+
+.continent-stats-note {
+    margin: calc(-1 * var(--spacing-2xl) + var(--spacing-sm)) 0 var(--spacing-2xl);
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    text-align: center;
+}
+
+.continent-group {
+    margin-bottom: var(--spacing-2xl);
+    scroll-margin-top: calc(var(--header-height) + var(--spacing-md));
+}
+
+.continent-group h2 {
+    margin-bottom: var(--spacing-md);
+    padding-bottom: var(--spacing-xs);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--spacing-lg);
+}
+
+.location-card {
+    background-color: var(--color-white);
+    border: 1px solid var(--color-border);
+}
+
+.location-photo {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background-color: var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.location-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* A gallery painting (not a room photo) is shown whole, never cropped */
+.location-photo.is-artwork {
+    padding: var(--spacing-sm);
+    background-color: #f1efeb;
+}
+
+.location-photo.is-artwork img {
+    object-fit: contain;
+}
+
+.location-photo-placeholder {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+}
+
+.location-info {
+    padding: var(--spacing-md);
+}
+
+.location-info h3 {
+    font-size: 1.375rem;
+}
+
+.location-place {
+    color: var(--color-text-light);
+}
+
+.location-coords,
+.location-distance {
+    font-size: 0.8125rem;
+    color: var(--color-text-muted);
+    margin-top: 0.25rem;
+}
+
+.location-coords {
+    font-variant-numeric: tabular-nums;
+}
+
+.location-story {
+    margin-top: var(--spacing-sm);
+    font-size: 0.9375rem;
+}
+
+.continent-group.is-pending h2 {
+    color: var(--color-text-muted);
+}
+
+.continent-pending-text {
+    padding: var(--spacing-lg);
+    border: 1px dashed var(--color-border);
+    color: var(--color-text-light);
+    text-align: center;
+}
+
+/* Personal note closing the Continent Project page */
+.continents-note {
+    max-width: 640px;
+    margin: var(--spacing-2xl) auto 0;
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.continents-note h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.continents-note p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+}
+
+.continents-note-signature {
+    margin-top: var(--spacing-md);
+    font-style: normal;
+    color: var(--color-highlight);
+}
+
+/* ==========================================================================
    Responsive Design
    ========================================================================== */
 @media (max-width: 768px) {
+    .continent-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     :root {
         --header-height: 70px;
     }

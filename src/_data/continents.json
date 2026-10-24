@@ -1,0 +1,138 @@
+{
+    "origin": {
+        "city": "Navi Mumbai",
+        "lat": 19.033,
+        "lng": 73.03
+    },
+    "continents": [
+        {
+            "name": "Asia",
+            "locations": [
+                {
+                    "city": "Dombivali",
+                    "region": "Maharashtra",
+                    "country": "India",
+                    "countryId": "356",
+                    "lat": 19.199,
+                    "lng": 73.095,
+                    "painting": "artwork-50.jpg",
+                    "photo": "",
+                    "year": "2011",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "North America",
+            "locations": [
+                {
+                    "city": "Princeton",
+                    "region": "New Jersey",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 40.28,
+                    "lng": -74.725,
+                    "painting": "artwork-15.jpg",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                },
+                {
+                    "city": "McKinney",
+                    "region": "Texas",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 33.173,
+                    "lng": -96.694,
+                    "painting": "artwork-20.jpg",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                },
+                {
+                    "city": "Morrisville",
+                    "region": "Pennsylvania",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 40.224,
+                    "lng": -74.822,
+                    "painting": "artwork-22.jpg",
+                    "photo": "continent-morrisville.jpg",
+                    "year": "",
+                    "story": "",
+                    "photoPosition": "50% 33%"
+                },
+                {
+                    "city": "San Francisco",
+                    "region": "California",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 37.775,
+                    "lng": -122.419,
+                    "painting": "artwork-17.jpg",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "South America",
+            "locations": [
+                {
+                    "city": "Santiago de Surco",
+                    "region": "Lima",
+                    "country": "Peru",
+                    "countryId": "604",
+                    "lat": -12.094,
+                    "lng": -76.971,
+                    "painting": "",
+                    "photo": "continent-peru.jpg",
+                    "year": "2025",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "Australia",
+            "locations": [
+                {
+                    "city": "Melbourne",
+                    "region": "Victoria",
+                    "country": "Australia",
+                    "countryId": "036",
+                    "lat": -37.913,
+                    "lng": 144.63,
+                    "painting": "artwork-40.jpg",
+                    "photo": "continent-melbourne.jpg",
+                    "year": "",
+                    "story": ""
+                }
+            ]
+        },
+        {
+            "name": "Europe",
+            "marker": {
+                "lat": 50,
+                "lng": 12
+            },
+            "locations": []
+        },
+        {
+            "name": "Africa",
+            "marker": {
+                "lat": 3,
+                "lng": 21
+            },
+            "locations": []
+        },
+        {
+            "name": "Antarctica",
+            "marker": {
+                "lat": -74,
+                "lng": 30
+            },
+            "locations": []
+        }
+    ]
+}
