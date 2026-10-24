@@ -9,7 +9,6 @@ import { feature } from "topojson-client";
 
 const require = createRequire(import.meta.url);
 const world = require("world-atlas/countries-110m.json");
-const data = JSON.parse(readFileSync(new URL("./continents.json", import.meta.url)));
 
 const EARTH_RADIUS_KM = 6371;
 const MAP_WIDTH = 1000;
@@ -17,6 +16,8 @@ const MAP_WIDTH = 1000;
 const formatCoord = (value, pos, neg) => `${Math.abs(value).toFixed(2)}° ${value >= 0 ? pos : neg}`;
 
 export default function () {
+    // Read on every build so edits to continents.json show up in `npm run dev`
+    const data = JSON.parse(readFileSync(new URL("./continents.json", import.meta.url)));
     const sphere = { type: "Sphere" };
     const projection = geoEqualEarth().fitWidth(MAP_WIDTH, sphere);
     const path = geoPath(projection).digits(1);
