@@ -792,15 +792,6 @@ blockquote cite {
     animation: taglineIn 1.2s ease both;
 }
 
-.tagline-mr,
-.continents-title {
-    background: linear-gradient(180deg, #c9a265 0%, #a8834a 55%, #7f6034 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-    color: var(--color-highlight);
-}
-
 .tagline-mr {
     display: block;
     font-family: 'Gotu', var(--font-serif);
@@ -808,6 +799,11 @@ blockquote cite {
     font-size: clamp(1.05rem, 2.2vw, 1.375rem); /* same as .tagline-en */
     line-height: 1.35;
     padding-top: 0.1em; /* room for the top matras */
+    color: var(--color-highlight);
+    background: linear-gradient(180deg, #c9a265 0%, #a8834a 55%, #7f6034 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .tagline-en {
@@ -835,8 +831,9 @@ blockquote cite {
 }
 
 .continents-title {
-    font-family: var(--font-serif);
-    font-weight: 600;
+    font-family: 'Cinzel', var(--font-serif);
+    font-weight: 500;
+    color: var(--color-highlight);
     font-size: clamp(1.05rem, 2.2vw, 1.375rem); /* same as the taglines */
     letter-spacing: 0.2em;
     text-transform: uppercase;
