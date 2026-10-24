@@ -786,18 +786,19 @@ blockquote cite {
     text-align: center;
 }
 
-.continents-eyebrow {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--color-highlight);
-    margin-bottom: var(--spacing-xs);
-}
-
 /* Marathi tagline — the page's opening line */
 .continents-tagline {
     margin: var(--spacing-sm) 0 var(--spacing-lg);
     animation: taglineIn 1.2s ease both;
+}
+
+.tagline-mr,
+.continents-title {
+    background: linear-gradient(180deg, #c9a265 0%, #a8834a 55%, #7f6034 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: var(--color-highlight);
 }
 
 .tagline-mr {
@@ -807,11 +808,6 @@ blockquote cite {
     font-size: clamp(1.05rem, 2.2vw, 1.375rem); /* same as .tagline-en */
     line-height: 1.35;
     padding-top: 0.1em; /* room for the top matras */
-    color: var(--color-highlight);
-    background: linear-gradient(180deg, #c9a265 0%, #a8834a 55%, #7f6034 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
 }
 
 .tagline-en {
@@ -836,6 +832,25 @@ blockquote cite {
 
 .tagline-en::after {
     background: linear-gradient(90deg, var(--color-highlight), transparent);
+}
+
+.continents-title {
+    font-family: var(--font-serif);
+    font-weight: 600;
+    font-size: clamp(1.05rem, 2.2vw, 1.375rem); /* same as the taglines */
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-xs);
+}
+
+.continents-subline {
+    font-family: var(--font-sans);
+    font-weight: 300;
+    font-size: 0.9375rem;
+    letter-spacing: 0.04em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-lg);
 }
 
 @keyframes taglineIn {
