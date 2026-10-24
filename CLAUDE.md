@@ -20,9 +20,16 @@ Read README.md for layout, commands and how to add a painting.
   maintainer must publish it in the Firebase console.
 - About page text is written by the family — don't reword it unless asked.
 
+## Continent Project page
+- `src/continents.njk`, data in `src/_data/continents.json` (derived map/stats in `continentProject.js`).
+- Currently UNLISTED (`noindex: true` + `"hidden": true` nav flag in `site.json`) until
+  Europe and Africa are placed. Publishing = remove both.
+- Coordinates are postcode-level only (never ZIP+4 or addresses); distances are from the
+  artist's home in Navi Mumbai. Crop photos so personal names/plates aren't readable.
+
 ## Roadmap (agreed plan)
 1. ✅ Security hardening (Firestore rules, App Check, API key restriction, rulesets)
-2. Eleventy migration + image optimization + Actions deploy
+2. ✅ Eleventy migration + image optimization + Actions deploy
 3. CI checks (HTML validation, link check, artworks.json schema), Dependabot, require PR checks
 4. Move exhibition videos out of git (YouTube/Vimeo), optional history cleanup
 5. SEO/sharing (Open Graph, sitemap, 404), accessibility, lightbox captions/titles
