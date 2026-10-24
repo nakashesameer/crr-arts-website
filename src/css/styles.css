@@ -966,6 +966,16 @@ blockquote cite {
     object-fit: cover;
 }
 
+/* A gallery painting (not a room photo) is shown whole, never cropped */
+.location-photo.is-artwork {
+    padding: var(--spacing-sm);
+    background-color: #f1efeb;
+}
+
+.location-photo.is-artwork img {
+    object-fit: contain;
+}
+
 .location-photo-placeholder {
     font-size: 0.8125rem;
     color: var(--color-text-muted);

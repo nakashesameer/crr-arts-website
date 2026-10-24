@@ -68,7 +68,7 @@ description: The Continent Project — a journey to have a painting by Chandraka
                 <div class="location-grid">
                     {%- for loc in c.locations %}
                     <article class="location-card">
-                        <div class="location-photo">
+                        <div class="location-photo{{ ' is-artwork' if loc.painting and not loc.photo }}">
                             {%- if loc.photo or loc.painting %}
                             {%- set photoFile = loc.photo or loc.painting %}
                             {%- set photoAlt = "Painting by Chandrakant R Raut in " + loc.city %}
