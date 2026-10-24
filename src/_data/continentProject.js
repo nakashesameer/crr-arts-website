@@ -1,6 +1,7 @@
 /**
  * Derived data for the Continent Project page, computed at build time
- * from continents.json: world map SVG paths, pin positions and distance stats.
+ * from continents.json: world map SVG paths, pin positions and distances from
+ * the artist's home (origin).
  */
 import { readFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -62,6 +63,7 @@ export default function () {
             land: countries.filter((f) => !countryIds.has(f.id)).map((f) => path(f)).join(""),
             highlighted: countries.filter((f) => countryIds.has(f.id)).map((f) => path(f)).join(""),
         },
+        origin: data.origin,
         continents,
         stats: {
             reached: continents.filter((c) => c.reached).length,

@@ -11,9 +11,8 @@ description: The Continent Project — a journey to have a painting by Chandraka
                 <h1 class="page-title">One painting on every continent</h1>
                 {#- DRAFT intro — replace with the family's own words #}
                 <p class="lead">
-                    From a studio in Mumbai, Mr. Raut's paintings have travelled to homes across the world.
-                    The Continent Project is a family journey to place at least one of his paintings on each of
-                    the seven continents on earth.
+                    Mr. Raut's paintings hang in homes across the world. The Continent Project is a family
+                    journey to place at least one of his paintings on each of the seven continents on earth.
                 </p>
 
                 <ol class="continent-progress" aria-label="{{ cp.stats.reached }} of {{ cp.stats.total }} continents reached">
@@ -54,12 +53,13 @@ description: The Continent Project — a journey to have a painting by Chandraka
                 </figcaption>
             </figure>
 
-            <dl class="continent-stats">
+            <dl class="continent-stats" aria-describedby="continent-stats-note">
                 <div><dt>Continents</dt><dd>{{ cp.stats.reached }} / {{ cp.stats.total }}</dd></div>
                 <div><dt>Cities</dt><dd>{{ cp.stats.homes }}</dd></div>
                 <div><dt>Countries</dt><dd>{{ cp.stats.countries }}</dd></div>
-                <div><dt>Farthest from Mumbai</dt><dd>{{ cp.stats.farthest.km | toLocaleString }} km</dd></div>
+                <div><dt>Farthest from home</dt><dd>{{ cp.stats.farthest.km | toLocaleString }} km</dd></div>
             </dl>
+            <p class="continent-stats-note" id="continent-stats-note">Distances are measured from the artist's home in {{ cp.origin.city }}.</p>
 
             {%- for c in cp.continents %}
             <section class="continent-group{{ '' if c.reached else ' is-pending' }}" id="{{ c.slug }}">
@@ -82,7 +82,7 @@ description: The Continent Project — a journey to have a painting by Chandraka
                             <p class="location-place">{{ loc.region }}, {{ loc.country }}</p>
                             <p class="location-coords">{{ loc.coords }}</p>
                             <p class="location-distance">
-                                {%- if loc.km > 0 %}{{ loc.km | toLocaleString }} km from Mumbai{% else %}Where it all began{% endif %}
+                                {{ loc.km | toLocaleString }} km from {{ cp.origin.city }}
                                 {%- if loc.year %} · {{ loc.year }}{% endif %}
                             </p>
                             {%- if loc.story %}

@@ -1,8 +1,8 @@
 {
     "origin": {
-        "city": "Mumbai",
-        "lat": 19.076,
-        "lng": 72.878
+        "city": "Navi Mumbai",
+        "lat": 19.033,
+        "lng": 73.03
     },
     "continents": [
         {
@@ -17,7 +17,7 @@
                     "lng": 73.095,
                     "painting": "artwork-50.jpg",
                     "photo": "",
-                    "year": "",
+                    "year": "2011",
                     "story": ""
                 }
             ]
@@ -101,7 +101,7 @@
                     "country": "Australia",
                     "countryId": "036",
                     "lat": -37.913,
-                    "lng": 144.630,
+                    "lng": 144.63,
                     "painting": "artwork-40.jpg",
                     "photo": "",
                     "year": "",
