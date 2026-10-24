@@ -9,13 +9,13 @@
             "name": "Asia",
             "locations": [
                 {
-                    "city": "Mumbai",
+                    "city": "Dombivali",
                     "region": "Maharashtra",
                     "country": "India",
                     "countryId": "356",
-                    "lat": 19.076,
-                    "lng": 72.878,
-                    "painting": "",
+                    "lat": 19.199,
+                    "lng": 73.095,
+                    "painting": "artwork-50.jpg",
                     "photo": "",
                     "year": "",
                     "story": ""
