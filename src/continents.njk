@@ -3,11 +3,19 @@ layout: layouts/base.njk
 permalink: /continents.html
 title: The Continent Project
 description: The Continent Project — a journey to have a painting by Chandrakant R Raut on every continent on earth
+devanagari: true
+tagline:
+    mr: जगाच्या कानाकोपऱ्यात
+    en: To every corner of the world
 ---
 {%- set cp = continentProject %}
         <section class="continents-section">
             <header class="continents-intro">
                 <p class="continents-eyebrow">The Continent Project</p>
+                <p class="continents-tagline">
+                    <span class="tagline-mr" lang="mr">{{ tagline.mr }}</span>
+                    <span class="tagline-en">{{ tagline.en }}</span>
+                </p>
                 <h1 class="page-title">One painting on every continent</h1>
                 {#- DRAFT intro — replace with the family's own words #}
                 <p class="lead">
