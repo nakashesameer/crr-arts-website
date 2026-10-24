@@ -803,7 +803,7 @@ blockquote cite {
 .tagline-mr {
     display: block;
     font-family: 'Tiro Devanagari Marathi', var(--font-serif);
-    font-size: clamp(2.5rem, 7vw, 4.75rem);
+    font-size: clamp(2rem, 5vw, 3.25rem);
     line-height: 1.35;
     padding-top: 0.1em; /* room for the top matras */
     color: var(--color-highlight);
