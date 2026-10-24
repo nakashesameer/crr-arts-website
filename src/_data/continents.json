@@ -1,5 +1,9 @@
 {
-    "origin": { "city": "Mumbai", "lat": 19.076, "lng": 72.878 },
+    "origin": {
+        "city": "Mumbai",
+        "lat": 19.076,
+        "lng": 72.878
+    },
     "continents": [
         {
             "name": "Asia",
@@ -26,7 +30,7 @@
                     "region": "New Jersey",
                     "country": "United States",
                     "countryId": "840",
-                    "lat": 40.280,
+                    "lat": 40.28,
                     "lng": -74.725,
                     "painting": "artwork-15.jpg",
                     "photo": "",
@@ -39,7 +43,7 @@
                     "country": "United States",
                     "countryId": "840",
                     "lat": 33.197,
-                    "lng": -96.640,
+                    "lng": -96.64,
                     "painting": "",
                     "photo": "",
                     "year": "",
@@ -53,6 +57,18 @@
                     "lat": 40.224,
                     "lng": -74.822,
                     "painting": "artwork-22.jpg",
+                    "photo": "",
+                    "year": "",
+                    "story": ""
+                },
+                {
+                    "city": "San Francisco",
+                    "region": "California",
+                    "country": "United States",
+                    "countryId": "840",
+                    "lat": 37.775,
+                    "lng": -122.419,
+                    "painting": "artwork-17.jpg",
                     "photo": "",
                     "year": "",
                     "story": ""
@@ -95,17 +111,26 @@
         },
         {
             "name": "Europe",
-            "marker": { "lat": 50, "lng": 12 },
+            "marker": {
+                "lat": 50,
+                "lng": 12
+            },
             "locations": []
         },
         {
             "name": "Africa",
-            "marker": { "lat": 3, "lng": 21 },
+            "marker": {
+                "lat": 3,
+                "lng": 21
+            },
             "locations": []
         },
         {
             "name": "Antarctica",
-            "marker": { "lat": -74, "lng": 30 },
+            "marker": {
+                "lat": -74,
+                "lng": 30
+            },
             "locations": []
         }
     ]
