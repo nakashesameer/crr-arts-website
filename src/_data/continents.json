@@ -57,9 +57,10 @@
                     "lat": 40.224,
                     "lng": -74.822,
                     "painting": "artwork-22.jpg",
-                    "photo": "",
+                    "photo": "continent-morrisville.jpg",
                     "year": "",
-                    "story": ""
+                    "story": "",
+                    "photoPosition": "50% 33%"
                 },
                 {
                     "city": "San Francisco",

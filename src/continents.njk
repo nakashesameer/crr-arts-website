@@ -72,7 +72,8 @@ description: The Continent Project — a journey to have a painting by Chandraka
                             {%- if loc.photo or loc.painting %}
                             {%- set photoFile = loc.photo or loc.painting %}
                             {%- set photoAlt = "Painting by Chandrakant R Raut in " + loc.city %}
-                            {% image photoFile, photoAlt, "(max-width: 768px) 100vw, 360px" %}
+                            {%- set photoAttrs = { style: "object-position: " + loc.photoPosition } if loc.photoPosition else {} %}
+                            {% image photoFile, photoAlt, "(max-width: 768px) 100vw, 360px", photoAttrs %}
                             {%- else %}
                             <span class="location-photo-placeholder">Photo coming soon</span>
                             {%- endif %}
