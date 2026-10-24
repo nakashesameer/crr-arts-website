@@ -1088,6 +1088,34 @@ blockquote cite {
     text-align: center;
 }
 
+/* Personal note closing the Continent Project page */
+.continents-note {
+    max-width: 640px;
+    margin: var(--spacing-2xl) auto 0;
+    padding-top: var(--spacing-xl);
+    border-top: 1px solid var(--color-border);
+    text-align: center;
+}
+
+.continents-note h2 {
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.continents-note p {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    color: var(--color-text-light);
+}
+
+.continents-note-signature {
+    margin-top: var(--spacing-md);
+    font-style: normal;
+    color: var(--color-highlight);
+}
+
 /* ==========================================================================
    Responsive Design
    ========================================================================== */
